@@ -164,12 +164,42 @@ elif section == "Education":
     st.markdown('</div>', unsafe_allow_html=True)
 
 # ==================================================
+# ==================================================
 # WORK EXPERIENCE
 # ==================================================
 elif section == "Work Experience":
     st.markdown('<div class="card">', unsafe_allow_html=True)
     st.header("💼 Work Experience")
 
+    # ---------- GRAPH (TIMELINE STYLE) ----------
+    exp = pd.DataFrame({
+        "Period": [
+            "Nov 2025 – Aug 2026",
+            "Jun – Aug 2025",
+            "May – Jun 2024"
+        ],
+        "Role": [
+            "Data Scientist Apprentice – Research & Innovation",
+            "Digital & Cloud Innovation Intern (AWS Partner)",
+            "Data Marketing Intern – N Platform"
+        ]
+    })
+
+    st.altair_chart(
+        alt.Chart(exp).mark_bar(
+            size=36,
+            cornerRadiusTopRight=8,
+            cornerRadiusBottomRight=8
+        ).encode(
+            x=alt.X("Period:N", title=None),
+            y=alt.Y("Role:N", sort=None, title=None),
+            color=alt.value("#0A2540"),
+            tooltip=["Period", "Role"]
+        ).properties(height=220),
+        use_container_width=True
+    )
+
+    # ---------- TEXT (UNCHANGED) ----------
     st.markdown("""
     **Devoteam France – Data Scientist Apprentice (R&I)**  
     *Nov. 2025 – Aug. 2026*  
@@ -188,6 +218,7 @@ elif section == "Work Experience":
     - Event coordination & WordPress content updates
     """)
     st.markdown('</div>', unsafe_allow_html=True)
+
 
 # ==================================================
 # SKILLS
