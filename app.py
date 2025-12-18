@@ -48,12 +48,8 @@ p, li {
     font-size: 16px;
     line-height: 1.65;
 }
-.subtle {
-    color: #6B7280;
-    font-size: 14px;
-}
 
-/* FORCE IMAGE ROUND (STREAMLIT SAFE) */
+/* FORCE IMAGE ROUND */
 img {
     border-radius: 50%;
     border: 3px solid #0A2540;
@@ -90,10 +86,9 @@ section = st.sidebar.radio(
 )
 
 # ==================================================
-# HEADER (WITH PHOTO – FIXED)
+# HEADER
 # ==================================================
 st.markdown('<div class="card">', unsafe_allow_html=True)
-
 col1, col2 = st.columns([1, 4])
 
 with col1:
@@ -116,17 +111,12 @@ st.markdown('</div>', unsafe_allow_html=True)
 if section == "Project Overview":
     st.markdown('<div class="card">', unsafe_allow_html=True)
     st.header("📘 Project Overview")
-
     st.markdown("""
-    **Project:** Transformation of an academic CV into an interactive
+    **Project:** Transformation of an academic CV into an interactive  
     **Business Intelligence dashboard** using Streamlit.
 
-    **Objective:**  
-    Structure, model and visualize academic and professional data
-    to enhance readability, analysis and storytelling.
-
     **Academic Context:**  
-    Developed within the **Business Intelligence** module at **EFREI Paris**.
+    Business Intelligence module — **EFREI Paris**
 
     **Academic Supervisor:**  
     Prof. **MATHEW Mano Joseph**  
@@ -140,9 +130,8 @@ if section == "Project Overview":
 elif section == "Profile":
     st.markdown('<div class="card">', unsafe_allow_html=True)
     st.header("👩‍💻 Profile")
-
     st.markdown("""
-    Engineering student at **EFREI Paris – Grande École d’Ingénieurs du Numérique**,
+    Engineering student at **EFREI Paris – Grande École d’Ingénieurs du Numérique**,  
     pursuing a **BSc in Digital Marketing Engineering**.
 
     Strong interest in **Business Intelligence, Data Analysis, Data Science,
@@ -157,18 +146,16 @@ elif section == "Profile":
 elif section == "Education":
     st.markdown('<div class="card">', unsafe_allow_html=True)
     st.header("🎓 Education")
-
     st.markdown("""
     **EFREI Paris – Grande École d’Ingénieurs du Numérique**  
     BSc in Digital Marketing Engineering — **GPA: 3.29 / 4.0**  
-    *Paris, France | 2023 – 2026*  
+    *Paris, France | 2023 – 2026*
 
-    Relevant courses:  
-    Data Analysis, Data Science, Statistics & Sales Forecasting,
+    Relevant courses: Data Analysis, Data Science, Statistics & Sales Forecasting,
     Artificial Intelligence, Business Intelligence, Digital Strategy
 
     **Integrated Preparatory Program – Engineering Sciences**  
-    *2022 – 2023*  
+    *2022 – 2023*
 
     **Groupe Scolaire Romandie – Casablanca, Morocco**  
     Scientific Baccalaureate (Mathematics & Physics), **Honors (Merit)**  
@@ -183,40 +170,25 @@ elif section == "Work Experience":
     st.markdown('<div class="card">', unsafe_allow_html=True)
     st.header("💼 Work Experience")
 
-    exp = pd.DataFrame({
-        "Period": [
-            "Nov 2025 – Aug 2026",
-            "Jun – Aug 2025",
-            "May – Jun 2024"
-        ],
-        "Role": [
-            "Data Scientist Apprentice – Research & Innovation",
-            "Digital & Cloud Innovation Intern (AWS Partner)",
-            "Data Marketing Intern – N Platform"
-        ]
-    })
-
-    st.altair_chart(
-        alt.Chart(exp).mark_bar(
-            size=38,
-            cornerRadiusTopRight=8,
-            cornerRadiusBottomRight=8
-        ).encode(
-            x=alt.X("Period:N", title=None),
-            y=alt.Y("Role:N", sort=None, title=None),
-            color=alt.value("#0A2540"),
-            tooltip=["Period", "Role"]
-        ).properties(height=220),
-        use_container_width=True
-    )
-
     st.markdown("""
-    **Devoteam France**  
-    - NLP research project with senior researchers and PhDs  
+    **Devoteam France – Data Scientist Apprentice (R&I)**  
+    *Nov. 2025 – Aug. 2026*  
+    - NLP research with senior researchers and PhDs  
     - Machine learning on large-scale unstructured data  
     - Data-driven dashboards and marketing optimizations  
+
+    **Devoteam – Digital & Cloud Innovation Intern (AWS Partner)**  
+    *Jun. – Aug. 2025*  
+    - AI-enabled platform testing (LSC Ballers)  
+    - Contribution to Devoteam × Alpine communication strategy  
+
+    **Devoteam – Data Marketing Intern (N Platform)**  
+    *May – Jun. 2024*  
+    - WorkflowNow project (Parc des Princes)  
+    - Event coordination & WordPress content updates
     """)
     st.markdown('</div>', unsafe_allow_html=True)
+
 # ==================================================
 # SKILLS
 # ==================================================
@@ -225,35 +197,22 @@ elif section == "Skills":
     st.header("🛠 Skills")
 
     skills = pd.DataFrame({
-        "Skill": [
-            "Python", "SQL", "HTML", "CSS",
-            "Business Intelligence", "Data Analysis"
-        ],
+        "Skill": ["Python", "SQL", "HTML", "CSS", "Business Intelligence", "Data Analysis"],
         "Level": [85, 80, 70, 70, 90, 85]
     })
 
     st.altair_chart(
-        alt.Chart(skills).mark_bar(
-            cornerRadiusEnd=10
-        ).encode(
-            x=alt.X(
-                "Level:Q",
-                scale=alt.Scale(domain=[0, 100]),
-                title="Proficiency (%)"
-            ),
-            y=alt.Y(
-                "Skill:N",
-                sort="-x",
-                title=None
-            ),
+        alt.Chart(skills).mark_bar(cornerRadiusEnd=10).encode(
+            x=alt.X("Level:Q", scale=alt.Scale(domain=[0, 100]), title="Proficiency (%)"),
+            y=alt.Y("Skill:N", sort="-x", title=None),
             color=alt.value("#0F172A"),
             tooltip=["Skill", "Level"]
-        ).properties(height=260),
+        ),
         use_container_width=True
     )
 
     st.markdown("""
-    **Tools:** Anaconda, Visual Studio, Git  
+    **Tools:** Python, SQL, HTML, CSS, Anaconda, Visual Studio, Streamlit, Git  
 
     **Certifications:**  
     - AXA National IT Challenge (2025)  
@@ -269,45 +228,45 @@ elif section == "Languages":
     st.header("🌍 Languages")
 
     lang = pd.DataFrame({
-        "Language": [
-            "Arabic (Native)",
-            "French (Native)",
-            "English (Advanced – TOEIC 920)"
-        ],
+        "Language": ["Arabic (Native)", "French (Native)", "English (Advanced – TOEIC 920)"],
         "Level": [100, 100, 90]
     })
 
-    donut = alt.Chart(lang).mark_arc(
-        innerRadius=85,
-        outerRadius=130
-    ).encode(
-        theta="Level:Q",
-        color=alt.Color(
-            "Language:N",
-            scale=alt.Scale(
-                range=["#0F172A", "#475569", "#94A3B8"]
-            )
+    st.altair_chart(
+        alt.Chart(lang).mark_arc(innerRadius=85).encode(
+            theta="Level:Q",
+            color=alt.Color("Language:N",
+            scale=alt.Scale(range=["#0F172A", "#475569", "#94A3B8"])),
+            tooltip=["Language", "Level"]
         ),
-        tooltip=["Language", "Level"]
+        use_container_width=True
     )
-
-    st.altair_chart(donut, use_container_width=True)
     st.markdown('</div>', unsafe_allow_html=True)
 
 # ==================================================
-# PROJECTS
+# PROJECTS (FULL – FROM CV)
 # ==================================================
 elif section == "Projects":
     st.markdown('<div class="card">', unsafe_allow_html=True)
-    st.header("📊 Relevant Project")
+    st.header("📊 Relevant Projects")
 
     st.markdown("""
-    **Business Intelligence Project – Sales Analysis**  
-    - Interactive **Power BI dashboard** on global BMW sales  
-    - Trend analysis by region, model, pricing and fuel type  
-    - Strategic insights to support business decisions  
+    **Sales Analysis – Business Intelligence Project**  
+    Built an interactive **Power BI dashboard** on global BMW sales.  
+    Analyzed trends by region, model, pricing and fuel type.  
+    Delivered strategic insights to support business decisions.  
 
     🔗 https://drive.google.com/file/d/1EZdoD37IQdLHSPXcpjMn6AOit0DGbI0A/view
+
+    ---
+
+    **Interactive CV Dashboard – Streamlit**  
+    Designed an interactive **Business Intelligence application**
+    transforming an academic CV into a structured dashboard,
+    applying data visualization and storytelling principles  
+    *(EFREI Paris)*.
+
+    🔗 https://cv-dashboard-app-rxyfesphor6ufjqqqni5vw.streamlit.app
     """)
     st.markdown('</div>', unsafe_allow_html=True)
 
@@ -324,6 +283,8 @@ elif section == "Extracurricular":
 
     **Student Ambassador – EFREI**  
 
+    **Football & Basketball Club – EFREI**  
+
     **Bab Ryan Association – Casablanca**  
     Group Leader  
 
@@ -335,4 +296,3 @@ elif section == "Extracurricular":
 # FOOTER
 # ==================================================
 st.success("Business Intelligence Academic Project — Streamlit Application")
-
