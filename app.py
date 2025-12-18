@@ -12,7 +12,7 @@ st.set_page_config(
 )
 
 # ==================================================
-# GLOBAL STYLE 
+# GLOBAL STYLE
 # ==================================================
 st.markdown("""
 <style>
@@ -53,12 +53,9 @@ p, li {
     font-size: 14px;
 }
 
-/* PROFILE PHOTO */
-.profile-pic {
-    width: 140px;
-    height: 140px;
+/* FORCE IMAGE ROUND (STREAMLIT SAFE) */
+img {
     border-radius: 50%;
-    object-fit: cover;
     border: 3px solid #0A2540;
 }
 
@@ -93,17 +90,14 @@ section = st.sidebar.radio(
 )
 
 # ==================================================
-# HEADER (WITH PHOTO)
+# HEADER (WITH PHOTO – FIXED)
 # ==================================================
 st.markdown('<div class="card">', unsafe_allow_html=True)
 
 col1, col2 = st.columns([1, 4])
 
 with col1:
-    st.markdown(
-        '<img src="profile.jpg" class="profile-pic">',
-        unsafe_allow_html=True
-    )
+    st.image("profile.jpg", width=140)
 
 with col2:
     st.title("Sara Bennani")
@@ -225,106 +219,6 @@ elif section == "Work Experience":
     st.markdown('</div>', unsafe_allow_html=True)
 
 # ==================================================
-# SKILLS
+# END
 # ==================================================
-elif section == "Skills":
-    st.markdown('<div class="card">', unsafe_allow_html=True)
-    st.header("🛠 Skills")
-
-    skills = pd.DataFrame({
-        "Skill": [
-            "Python", "SQL", "HTML", "CSS",
-            "Business Intelligence", "Data Analysis"
-        ],
-        "Level": [85, 80, 70, 70, 90, 85]
-    })
-
-    st.altair_chart(
-        alt.Chart(skills).mark_bar(
-            cornerRadiusEnd=10
-        ).encode(
-            x=alt.X("Level:Q", scale=alt.Scale(domain=[0, 100]), title="Proficiency (%)"),
-            y=alt.Y("Skill:N", sort="-x", title=None),
-            color=alt.value("#0F172A"),
-            tooltip=["Skill", "Level"]
-        ).properties(height=260),
-        use_container_width=True
-    )
-
-    st.markdown("""
-    **Tools:** Anaconda, Visual Studio, Git  
-    **Certifications:**  
-    - AXA National IT Challenge (2025)  
-    - EFREI Generative AI Basics (2025)
-    """)
-    st.markdown('</div>', unsafe_allow_html=True)
-
-# ==================================================
-# LANGUAGES
-# ==================================================
-elif section == "Languages":
-    st.markdown('<div class="card">', unsafe_allow_html=True)
-    st.header("🌍 Languages")
-
-    lang = pd.DataFrame({
-        "Language": [
-            "Arabic (Native)",
-            "French (Native)",
-            "English (Advanced – TOEIC 920)"
-        ],
-        "Level": [100, 100, 90]
-    })
-
-    donut = alt.Chart(lang).mark_arc(
-        innerRadius=85,
-        outerRadius=130
-    ).encode(
-        theta="Level:Q",
-        color=alt.Color(
-            "Language:N",
-            scale=alt.Scale(range=["#0F172A", "#475569", "#94A3B8"])
-        ),
-        tooltip=["Language", "Level"]
-    )
-
-    st.altair_chart(donut, use_container_width=True)
-    st.markdown('</div>', unsafe_allow_html=True)
-
-# ==================================================
-# PROJECTS
-# ==================================================
-elif section == "Projects":
-    st.markdown('<div class="card">', unsafe_allow_html=True)
-    st.header("📊 Relevant Project")
-
-    st.markdown("""
-    **Business Intelligence Project – Sales Analysis**  
-    - Interactive **Power BI dashboard** on global BMW sales  
-    - Trend analysis by region, model, pricing and fuel type  
-    - Strategic insights to support business decisions  
-
-    🔗 https://drive.google.com/file/d/1EZdoD37IQdLHSPXcpjMn6AOit0DGbI0A/view
-    """)
-    st.markdown('</div>', unsafe_allow_html=True)
-
-# ==================================================
-# EXTRACURRICULAR
-# ==================================================
-elif section == "Extracurricular":
-    st.markdown('<div class="card">', unsafe_allow_html=True)
-    st.header("🏅 Extracurricular Activities & Interests")
-
-    st.markdown("""
-    **Student Union (BDE) – EFREI**  
-    Events Department – Member  
-
-    **Student Ambassador – EFREI**  
-
-    **Bab Ryan Association – Casablanca**  
-    Group Leader  
-
-    **Interests:** Drawing, Piano, Fitness, Theater
-    """)
-    st.markdown('</div>', unsafe_allow_html=True)
-
 st.success("Business Intelligence Academic Project — Streamlit Application")
