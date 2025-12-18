@@ -12,7 +12,7 @@ st.set_page_config(
 )
 
 # ==================================================
-# GLOBAL STYLE – HEC / EXECUTIVE
+# GLOBAL STYLE 
 # ==================================================
 st.markdown("""
 <style>
@@ -53,6 +53,15 @@ p, li {
     font-size: 14px;
 }
 
+/* PROFILE PHOTO */
+.profile-pic {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #0A2540;
+}
+
 /* SIDEBAR */
 [data-testid="stSidebar"] {
     background-color: #0F172A;
@@ -84,16 +93,27 @@ section = st.sidebar.radio(
 )
 
 # ==================================================
-# HEADER
+# HEADER (WITH PHOTO)
 # ==================================================
 st.markdown('<div class="card">', unsafe_allow_html=True)
-st.title("Sara Bennani")
-st.subheader("Data • Business Intelligence • Digital Marketing")
-st.markdown("""
-📍 Paris, France  
-📧 **sbennani.sbn@gmail.com**  
-🔗 [LinkedIn](https://www.linkedin.com)
-""")
+
+col1, col2 = st.columns([1, 4])
+
+with col1:
+    st.markdown(
+        '<img src="profile.jpg" class="profile-pic">',
+        unsafe_allow_html=True
+    )
+
+with col2:
+    st.title("Sara Bennani")
+    st.subheader("Data • Business Intelligence • Digital Marketing")
+    st.markdown("""
+    📍 Paris, France  
+    📧 **sbennani.sbn@gmail.com**  
+    🔗 [LinkedIn](https://www.linkedin.com)
+    """)
+
 st.markdown('</div>', unsafe_allow_html=True)
 
 # ==================================================
@@ -155,8 +175,6 @@ elif section == "Education":
 
     **Integrated Preparatory Program – Engineering Sciences**  
     *2022 – 2023*  
-    Courses: Algorithms & Programming (Python), Linear Algebra,
-    Probability, Statistics
 
     **Groupe Scolaire Romandie – Casablanca, Morocco**  
     Scientific Baccalaureate (Mathematics & Physics), **Honors (Merit)**  
@@ -203,12 +221,6 @@ elif section == "Work Experience":
     - NLP research project with senior researchers and PhDs  
     - Machine learning on large-scale unstructured data  
     - Data-driven dashboards and marketing optimizations  
-
-    - Participation in AI-enabled digital platform testing  
-    - Contribution to Devoteam × Alpine communication strategy  
-
-    - Data-driven marketing initiatives  
-    - Event coordination and WordPress content updates
     """)
     st.markdown('</div>', unsafe_allow_html=True)
 
@@ -307,8 +319,6 @@ elif section == "Extracurricular":
     Events Department – Member  
 
     **Student Ambassador – EFREI**  
-
-    **Football & Basketball Club – EFREI**  
 
     **Bab Ryan Association – Casablanca**  
     Group Leader  
