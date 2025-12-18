@@ -12,20 +12,54 @@ st.set_page_config(
 )
 
 # ==================================================
-# GLOBAL STYLE (SOBER & ELEGANT)
+# GLOBAL STYLE – HEC / EXECUTIVE
 # ==================================================
 st.markdown("""
 <style>
-body { background-color: #F2F2F2; }
-h1, h2, h3 { color: #111111; }
+body {
+    background-color: #F8FAFC;
+    font-family: 'Inter', sans-serif;
+}
+
+/* HEADINGS */
+h1 {
+    color: #0F172A;
+    font-weight: 700;
+    letter-spacing: -0.6px;
+}
+h2, h3 {
+    color: #0A2540;
+    font-weight: 600;
+}
+
+/* CARDS */
 .card {
     background-color: #FFFFFF;
-    padding: 28px;
-    border-radius: 14px;
-    margin-bottom: 24px;
-    box-shadow: 0px 6px 20px rgba(0,0,0,0.06);
+    padding: 34px;
+    border-radius: 18px;
+    margin-bottom: 30px;
+    box-shadow: 0px 12px 32px rgba(15, 23, 42, 0.08);
+    border-left: 6px solid #0A2540;
 }
-.subtle { color: #666666; }
+
+/* TEXT */
+p, li {
+    color: #334155;
+    font-size: 16px;
+    line-height: 1.65;
+}
+.subtle {
+    color: #6B7280;
+    font-size: 14px;
+}
+
+/* SIDEBAR */
+[data-testid="stSidebar"] {
+    background-color: #0F172A;
+}
+[data-testid="stSidebar"] * {
+    color: #E5E7EB;
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -151,12 +185,16 @@ elif section == "Work Experience":
     })
 
     st.altair_chart(
-        alt.Chart(exp).mark_bar(size=40).encode(
-            x="Period:N",
-            y=alt.Y("Role:N", sort=None),
-            color=alt.value("#4A4A4A"),
+        alt.Chart(exp).mark_bar(
+            size=38,
+            cornerRadiusTopRight=8,
+            cornerRadiusBottomRight=8
+        ).encode(
+            x=alt.X("Period:N", title=None),
+            y=alt.Y("Role:N", sort=None, title=None),
+            color=alt.value("#0A2540"),
             tooltip=["Period", "Role"]
-        ),
+        ).properties(height=220),
         use_container_width=True
     )
 
@@ -190,12 +228,14 @@ elif section == "Skills":
     })
 
     st.altair_chart(
-        alt.Chart(skills).mark_bar(cornerRadiusEnd=8).encode(
-            x=alt.X("Level:Q", scale=alt.Scale(domain=[0,100])),
-            y=alt.Y("Skill:N", sort="-x"),
-            color=alt.value("#2F2F2F"),
+        alt.Chart(skills).mark_bar(
+            cornerRadiusEnd=10
+        ).encode(
+            x=alt.X("Level:Q", scale=alt.Scale(domain=[0, 100]), title="Proficiency (%)"),
+            y=alt.Y("Skill:N", sort="-x", title=None),
+            color=alt.value("#0F172A"),
             tooltip=["Skill", "Level"]
-        ),
+        ).properties(height=260),
         use_container_width=True
     )
 
@@ -223,11 +263,14 @@ elif section == "Languages":
         "Level": [100, 100, 90]
     })
 
-    donut = alt.Chart(lang).mark_arc(innerRadius=70).encode(
+    donut = alt.Chart(lang).mark_arc(
+        innerRadius=85,
+        outerRadius=130
+    ).encode(
         theta="Level:Q",
         color=alt.Color(
             "Language:N",
-            scale=alt.Scale(range=["#1F1F1F", "#6B6B6B", "#B0B0B0"])
+            scale=alt.Scale(range=["#0F172A", "#475569", "#94A3B8"])
         ),
         tooltip=["Language", "Level"]
     )
@@ -262,16 +305,13 @@ elif section == "Extracurricular":
     st.markdown("""
     **Student Union (BDE) – EFREI**  
     Events Department – Member  
-    Organization of student events and logistics  
 
     **Student Ambassador – EFREI**  
-    Representation during Open Days  
 
     **Football & Basketball Club – EFREI**  
-    Active member – teamwork and discipline  
 
     **Bab Ryan Association – Casablanca**  
-    Group Leader – community initiatives  
+    Group Leader  
 
     **Interests:** Drawing, Piano, Fitness, Theater
     """)
