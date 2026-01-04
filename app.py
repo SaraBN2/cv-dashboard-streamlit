@@ -16,34 +16,15 @@ st.set_page_config(
 # ==================================================
 st.markdown("""
 <style>
-body {
-    background-color: #F8FAFC;
-    font-family: 'Inter', sans-serif;
-}
-h1 { color: #0F172A; font-weight: 700; }
-h2, h3 { color: #0A2540; font-weight: 600; }
+body {background-color: #F8FAFC; font-family: 'Inter', sans-serif;}
+h1, h2, h3 {color: #0A2540;}
 .card {
-    background-color: #FFFFFF;
-    padding: 34px;
+    background: white;
+    padding: 32px;
     border-radius: 18px;
     margin-bottom: 30px;
-    box-shadow: 0px 12px 32px rgba(15, 23, 42, 0.08);
+    box-shadow: 0px 10px 28px rgba(0,0,0,0.08);
     border-left: 6px solid #0A2540;
-}
-p, li {
-    color: #334155;
-    font-size: 16px;
-    line-height: 1.65;
-}
-img {
-    border-radius: 50%;
-    border: 3px solid #0A2540;
-}
-[data-testid="stSidebar"] {
-    background-color: #0F172A;
-}
-[data-testid="stSidebar"] * {
-    color: #E5E7EB;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -52,18 +33,16 @@ img {
 # SIDEBAR
 # ==================================================
 st.sidebar.title("Navigation")
-
 section = st.sidebar.radio(
-    "Sections",
+    "",
     [
-        "Executive Summary",
+        "Executive Overview",
         "Profile",
         "Education",
         "Work Experience",
         "Skills",
-        "Languages",
         "Projects",
-        "Extracurricular"
+        "Leadership & Activities"
     ]
 )
 
@@ -71,41 +50,35 @@ section = st.sidebar.radio(
 # HEADER
 # ==================================================
 st.markdown('<div class="card">', unsafe_allow_html=True)
-col1, col2 = st.columns([1, 4])
+st.title("Sara Bennani")
+st.subheader("Business Intelligence • Data Analytics • Digital Strategy")
 
-with col1:
-    st.image("profile.jpg", width=140)
-
-with col2:
-    st.title("Sara Bennani")
-    st.subheader("Data Science • Business Intelligence • Digital Strategy")
-    st.markdown("""
-    📍 Paris, France  
-    📧 **sbennani.sbn@gmail.com**  
-    🔗 LinkedIn: Sara Bennani
-    """)
-
+st.markdown("""
+📍 Paris, France  
+📧 sbennani.sbn@gmail.com  
+🔗 LinkedIn: Sara Bennani
+""")
 st.markdown('</div>', unsafe_allow_html=True)
 
 # ==================================================
-# EXECUTIVE SUMMARY
+# EXECUTIVE OVERVIEW
 # ==================================================
-if section == "Executive Summary":
+if section == "Executive Overview":
     st.markdown('<div class="card">', unsafe_allow_html=True)
-    st.header("📌 Executive Summary")
+    st.header("Executive Overview")
 
     col1, col2, col3, col4 = st.columns(4)
-    col1.metric("GPA (Semester 4)", "17.33 / 20")
-    col2.metric("TOEIC Score", "920")
-    col3.metric("Professional Experiences", "4")
-    col4.metric("Key Projects", "2")
+
+    col1.metric("GPA (S4)", "17.33 / 20")
+    col2.metric("Projects", "6+")
+    col3.metric("Languages", "3")
+    col4.metric("Professional Experiences", "4")
 
     st.markdown("""
-    Bachelor student in **Digital Marketing Engineering** at **Efrei Paris Panthéon-Assas Université**,  
-    combining **data science, business intelligence, and digital strategy**.
+    Business Intelligence–oriented engineering student at **Efrei Paris Panthéon-Assas University**,  
+    combining **data analytics, AI modeling and digital strategy** to support decision-making.
 
-    Strong experience in **predictive modeling, NLP, analytics dashboards**, and  
-    **data-driven marketing**, with demonstrated leadership and measurable business impact.
+    Strong exposure to **real-world business cases**, applied machine learning and data-driven marketing.
     """)
     st.markdown('</div>', unsafe_allow_html=True)
 
@@ -114,13 +87,14 @@ if section == "Executive Summary":
 # ==================================================
 elif section == "Profile":
     st.markdown('<div class="card">', unsafe_allow_html=True)
-    st.header("👩‍💻 Profile")
-    st.markdown("""
-    Data-oriented engineering student with a strong interest in  
-    **Business Intelligence, Data Analytics, Machine Learning and Digital Strategy**.
+    st.header("Profile")
 
-    Experienced in transforming complex data into **actionable insights**
-    to support strategic decision-making in both technical and business environments.
+    st.markdown("""
+    Bachelor student in **Digital Marketing Engineering**, with a strong analytical mindset and
+    a particular interest in **Business Intelligence, Data Analytics, AI applications and strategy**.
+
+    Experienced in transforming **raw data into actionable insights**, communicating results to both
+    technical and non-technical stakeholders.
     """)
     st.markdown('</div>', unsafe_allow_html=True)
 
@@ -129,26 +103,19 @@ elif section == "Profile":
 # ==================================================
 elif section == "Education":
     st.markdown('<div class="card">', unsafe_allow_html=True)
-    st.header("🎓 Education")
+    st.header("Education")
 
     st.markdown("""
-    **Efrei Paris Panthéon-Assas Université** — Paris, France  
+    **Efrei Paris Panthéon-Assas University** — Paris, France  
     Bachelor in Digital Marketing Engineering  
     *Sep. 2023 – Expected Aug. 2026*  
 
-    **Semester 4 GPA:** **17.33 / 20**  
-    **Honor:** Student Ambassador  
+    **GPA (Semester 4): 17.33 / 20**  
+    Honors: *Student Ambassador*
 
-    **Relevant Coursework:**  
-    Data Science, Data Analytics, Business Intelligence & Analytics,  
-    Python Programming, Advanced Programming, Statistics, UX/UI Ergonomics
-
-    ---
-
-    **Integrated Preparatory Classes – Engineering Sciences**  
-    *Sep. 2022 – Sep. 2023*  
-
-    Coursework: Mechanics, Electricity, Algorithmics, Linear Algebra, Analysis
+    **Key coursework:**  
+    Data Science, Data Analytics, Business Intelligence & Analytics, Statistics,  
+    Python Programming, Web Development, UX/UI Ergonomics
     """)
     st.markdown('</div>', unsafe_allow_html=True)
 
@@ -157,47 +124,48 @@ elif section == "Education":
 # ==================================================
 elif section == "Work Experience":
     st.markdown('<div class="card">', unsafe_allow_html=True)
-    st.header("💼 Work Experience")
+    st.header("Professional Experience")
 
     exp = pd.DataFrame({
+        "Period": [
+            "Nov 2025 – Aug 2026",
+            "Jun 2025 – Aug 2025",
+            "May 2024 – Aug 2024",
+            "Jul 2023 – Aug 2023"
+        ],
         "Role": [
-            "Data Scientist Intern – R&I (Alternance)",
-            "Digital & Cloud Innovation Intern",
+            "Data Scientist Intern – Research & Innovation",
+            "Digital & Cloud Innovation Intern (AWS)",
             "Data Marketing Intern",
             "Digital Marketing Intern"
-        ],
-        "Impact Score": [90, 85, 80, 70]
+        ]
     })
 
     st.altair_chart(
-        alt.Chart(exp).mark_bar(cornerRadiusEnd=10).encode(
-            x=alt.X("Impact Score:Q", scale=alt.Scale(domain=[0, 100]), title="Impact Level"),
-            y=alt.Y("Role:N", sort="-x", title=None),
+        alt.Chart(exp).mark_bar(size=35).encode(
+            x="Period:N",
+            y=alt.Y("Role:N", sort=None),
             color=alt.value("#0A2540"),
-            tooltip=["Role", "Impact Score"]
+            tooltip=["Period", "Role"]
         ),
         use_container_width=True
     )
 
     st.markdown("""
-    **Devoteam – Research & Innovation Department** — Paris  
-    *Data Scientist Intern (Alternance) | Nov. 2025 – Aug. 2026*  
-    - Built an NLP-based engagement prediction model (**+25% reach**)  
-    - Led a 4-member team for structured & unstructured data labeling  
+    **Devoteam – Research & Innovation (Data Scientist Intern)**  
+    - Built and presented an NLP-based engagement prediction model (+25% reach)  
+    - Led a 4-member team on structured & unstructured data preparation  
 
-    **Devoteam (AWS Partner)** — Paris  
-    *Digital & Cloud Innovation Intern | Jun. – Aug. 2025*  
-    - Player performance prediction model (**+20% accuracy**)  
-    - Sports analytics platform development  
+    **Devoteam – Digital & Cloud Innovation (AWS)**  
+    - Developed a player performance prediction model (~20% accuracy improvement)  
+    - Contributed to a sports analytics platform (matches & player statistics)
 
-    **Devoteam – Marketing Department** — Paris  
-    *Data Marketing Intern | May – Aug. 2024*  
-    - Designed event communication materials (10+ partners)  
-    - Built 500+ registration tracking & weekly reporting  
+    **Devoteam – Marketing Department**  
+    - Designed official event communication (Parc des Princes)  
+    - Built a 500+ registration tracking & reporting system  
 
-    **Inwi (Top 3 Telecom Operator)** — Casablanca  
-    *Digital Marketing Intern | Jul. – Aug. 2023*  
-    - Customer data integration for marketing campaign optimization
+    **Inwi (Telecom Operator)**  
+    - Supported data-driven digital marketing campaign framework
     """)
     st.markdown('</div>', unsafe_allow_html=True)
 
@@ -206,17 +174,17 @@ elif section == "Work Experience":
 # ==================================================
 elif section == "Skills":
     st.markdown('<div class="card">', unsafe_allow_html=True)
-    st.header("🛠 Skills")
+    st.header("Skills Matrix")
 
     skills = pd.DataFrame({
-        "Skill": ["Python", "SQL", "Business Intelligence", "Data Analytics", "Machine Learning", "Digital Strategy"],
-        "Level": [90, 85, 90, 85, 80, 85]
+        "Skill": ["Python", "SQL", "Business Intelligence", "Data Analytics", "HTML/CSS", "Machine Learning"],
+        "Level": [90, 85, 90, 88, 75, 80]
     })
 
     st.altair_chart(
         alt.Chart(skills).mark_bar(cornerRadiusEnd=10).encode(
-            x=alt.X("Level:Q", scale=alt.Scale(domain=[0, 100]), title="Proficiency (%)"),
-            y=alt.Y("Skill:N", sort="-x", title=None),
+            x=alt.X("Level:Q", scale=alt.Scale(domain=[0, 100])),
+            y=alt.Y("Skill:N", sort="-x"),
             color=alt.value("#0F172A"),
             tooltip=["Skill", "Level"]
         ),
@@ -224,31 +192,9 @@ elif section == "Skills":
     )
 
     st.markdown("""
-    **Programming & Tools:** Python, SQL, HTML, CSS, Streamlit, Git, Anaconda, Visual Studio  
-    **Certifications:** AXA National IT Challenge (2025), EFREI Generative AI Basics (2025)
+    **Tools:** Python, SQL, Streamlit, Git, Anaconda, Visual Studio  
+    **Languages:** Arabic (Native), French (Native), English (Fluent – TOEIC 920)
     """)
-    st.markdown('</div>', unsafe_allow_html=True)
-
-# ==================================================
-# LANGUAGES
-# ==================================================
-elif section == "Languages":
-    st.markdown('<div class="card">', unsafe_allow_html=True)
-    st.header("🌍 Languages")
-
-    lang = pd.DataFrame({
-        "Language": ["Arabic", "French", "English"],
-        "Level": [100, 100, 90]
-    })
-
-    st.altair_chart(
-        alt.Chart(lang).mark_arc(innerRadius=80).encode(
-            theta="Level:Q",
-            color="Language:N",
-            tooltip=["Language", "Level"]
-        ),
-        use_container_width=True
-    )
     st.markdown('</div>', unsafe_allow_html=True)
 
 # ==================================================
@@ -256,33 +202,28 @@ elif section == "Languages":
 # ==================================================
 elif section == "Projects":
     st.markdown('<div class="card">', unsafe_allow_html=True)
-    st.header("📊 Relevant Projects")
+    st.header("Selected Projects")
 
     st.markdown("""
-    **Interactive CV Dashboard – Streamlit (BI Project)**  
-    Developed an interactive Business Intelligence application to structure
-    and visualize an academic CV using data storytelling principles.  
-
-    🔗 https://cv-dashboard-app-rxyfesphor6ufjqqqni5vw.streamlit.app  
-
-    ---
+    **Interactive CV Dashboard – Streamlit**  
+    Designed a Business Intelligence application to structure and visualize an academic CV.
 
     **Drawing Portfolio**  
-    Ongoing personal project enabling creative expression and visual communication.
+    Ongoing artistic practice supporting creativity, communication and idea clarification.
     """)
     st.markdown('</div>', unsafe_allow_html=True)
 
 # ==================================================
-# EXTRACURRICULAR
+# LEADERSHIP
 # ==================================================
-elif section == "Extracurricular":
+elif section == "Leadership & Activities":
     st.markdown('<div class="card">', unsafe_allow_html=True)
-    st.header("🏅 Extracurricular Activities")
+    st.header("Leadership & Extracurricular Activities")
 
     st.markdown("""
     **Student Union (BDE) – Event Organizer**  
-    - Negotiated €2500 funding  
-    - Organized bi-weekly events (200+ attendees)  
+    - Negotiated €2,500 funding  
+    - Managed events with 200+ attendees  
 
     **Football Club – Efrei Paris**  
     Member of the official university team  
@@ -290,11 +231,8 @@ elif section == "Extracurricular":
     **Volunteering – Bab Rayan Association**  
     Group leader supporting orphan children  
 
-    **Hobbies:** Theater (7 years), Piano (Conservatory), Drawing
+    **Arts & Culture:** Theater, Piano (Conservatory), Drawing
     """)
     st.markdown('</div>', unsafe_allow_html=True)
 
-# ==================================================
-# FOOTER
-# ==================================================
 st.success("Business Intelligence CV Dashboard — Academic & Professional Project")
