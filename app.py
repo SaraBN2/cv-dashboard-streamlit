@@ -72,8 +72,9 @@ with col2:
     st.markdown("""
     📍 Paris, France  
     📧 **sbennani.sbn@gmail.com**  
-    🔗 [LinkedIn](https://www.linkedin.com)
-    """)
+    📧 **Academic Supervisor:**  
+[mano.mathew@efrei.fr](mailto:mano.mathew@efrei.fr)
+""")
 
 st.markdown('</div>', unsafe_allow_html=True)
 
