@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import altair as alt
-import numpy as np
 
 # ==================================================
 # PAGE CONFIG
@@ -87,8 +86,8 @@ if section == "Project Overview":
 
     col1, col2, col3 = st.columns(3)
     col1.metric("Semester 4 GPA", "17.33 / 20")
-    col2.metric("Professional Experiences", "4")
-    col3.metric("Projects Delivered", "6+")
+    col2.metric("Experiences", "4")
+    col3.metric("Projects", "6+")
 
     st.markdown("""
     **Project:** Transformation of an academic CV into an interactive  
@@ -98,7 +97,8 @@ if section == "Project Overview":
     Business Intelligence module — **EFREI Paris Panthéon-Assas University**
 
     **Academic Supervisor:**  
-    Prof. **MATHEW Mano Joseph**
+    Prof. **MATHEW Mano Joseph**  
+    🔗 https://www.linkedin.com/in/manomathew/
     """)
     st.markdown('</div>', unsafe_allow_html=True)
 
@@ -115,16 +115,16 @@ elif section == "Profile":
 
     Strong interest in **Business Intelligence, Data Analytics,
     Artificial Intelligence and Digital Strategy**, with hands-on
-    experience in predictive modeling, dashboards and data-driven decision making.
+    experience in data-driven decision making.
     """)
 
-    radar_df = pd.DataFrame({
-        "Dimension": ["Data Analytics", "Business Intelligence", "AI / ML", "Digital Marketing", "Strategy"],
-        "Score": [85, 90, 80, 85, 80]
+    radar = pd.DataFrame({
+        "Dimension": ["BI", "Data Analytics", "AI / ML", "Digital Marketing", "Strategy"],
+        "Score": [90, 88, 80, 85, 82]
     })
 
     st.altair_chart(
-        alt.Chart(radar_df).mark_line(point=True).encode(
+        alt.Chart(radar).mark_line(point=True).encode(
             theta="Dimension:N",
             radius="Score:Q",
             color=alt.value("#0A2540")
@@ -141,27 +141,27 @@ elif section == "Education":
     st.markdown('<div class="card">', unsafe_allow_html=True)
     st.header("🎓 Education")
 
+    edu = pd.DataFrame({
+        "Year": ["2022", "2023", "2024", "2025"],
+        "Academic Level": [1, 2, 3, 4]
+    })
+
+    st.altair_chart(
+        alt.Chart(edu).mark_bar().encode(
+            x="Year:N",
+            y="Academic Level:Q",
+            color=alt.value("#0A2540")
+        ),
+        use_container_width=True
+    )
+
     st.markdown("""
     **Efrei Paris Panthéon-Assas University**  
-    Bachelor in Digital Marketing Engineering (Grade License)  
-    *Paris, France | Sep. 2023 – Expected Aug. 2026*
+    Bachelor in Digital Marketing Engineering  
+    *Sep. 2023 – Expected Aug. 2026*  
 
-    **Semester 4 GPA: 17.33 / 20**  
-    Honors: *Student Ambassador*
-
-    Relevant courses:  
-    Data Science, Data Analytics, Business Intelligence & Analytics,  
-    Statistics, Python Programming, Web Development, UX/UI Ergonomics
-
-    ---
-
-    **Integrated Preparatory Classes – Engineering Sciences**  
-    *Sep. 2022 – Sep. 2023*
-
-    Relevant courses:  
-    Mechanics and Waves, Electricity, Algorithmics, Analysis, Linear Algebra
+    **Semester 4 GPA: 17.33 / 20** — Honors: *Student Ambassador*
     """)
-
     st.markdown('</div>', unsafe_allow_html=True)
 
 # ==================================================
@@ -171,44 +171,30 @@ elif section == "Work Experience":
     st.markdown('<div class="card">', unsafe_allow_html=True)
     st.header("💼 Work Experience")
 
-    exp = pd.DataFrame({
-        "Period": [
-            "Jul 2023 – Aug 2023",
-            "May 2024 – Aug 2024",
-            "Jun 2025 – Aug 2025",
-            "Nov 2025 – Aug 2026"
-        ],
-        "Experience Level": [1, 2, 3, 4]
+    impact = pd.DataFrame({
+        "Project": ["NLP Model", "Sports Prediction", "Event Analytics"],
+        "Impact (%)": [25, 20, 30]
     })
 
     st.altair_chart(
-        alt.Chart(exp).mark_line(point=True).encode(
-            x="Period:N",
-            y="Experience Level:Q",
-            tooltip=["Period"]
+        alt.Chart(impact).mark_bar().encode(
+            x="Impact (%):Q",
+            y="Project:N",
+            color=alt.value("#0F172A")
         ),
         use_container_width=True
     )
 
     st.markdown("""
-    **Devoteam – Research & Innovation Department**  
-    *Data Scientist Intern – Work-Study Program*  
-    - NLP-based engagement prediction model (**+25% reach**)  
-    - Led a 4-member team on structured & unstructured data  
+    **Devoteam – Research & Innovation**  
+    NLP-based engagement prediction model (**+25% reach**)
 
-    **Devoteam – Digital & Cloud Innovation (AWS)**  
-    - Player performance prediction model (**~20% accuracy improvement**)  
-    - Sports analytics platform development  
+    **Devoteam – AWS Digital Innovation**  
+    Player performance prediction (**~20% accuracy gain**)
 
-    **Devoteam – Marketing Department**  
-    - Event communication (Parc des Princes)  
-    - **500+ registration tracking system**  
-    - LinkedIn & newsletter management  
-
-    **Inwi – Telecom Operator**  
-    - Digital marketing data framework support
+    **Devoteam – Marketing**  
+    500+ registration tracking & event analytics
     """)
-
     st.markdown('</div>', unsafe_allow_html=True)
 
 # ==================================================
@@ -219,24 +205,18 @@ elif section == "Skills":
     st.header("🛠 Skills")
 
     skills = pd.DataFrame({
-        "Skill": ["Python", "SQL", "Business Intelligence", "Data Analytics", "HTML/CSS", "Machine Learning"],
+        "Skill": ["Python", "SQL", "BI", "Data Analytics", "HTML/CSS", "ML"],
         "Level": [90, 85, 90, 88, 75, 80]
     })
 
     st.altair_chart(
         alt.Chart(skills).mark_bar(cornerRadiusEnd=10).encode(
-            x=alt.X("Level:Q", scale=alt.Scale(domain=[0, 100])),
+            x="Level:Q",
             y=alt.Y("Skill:N", sort="-x"),
-            color=alt.value("#0F172A"),
-            tooltip=["Skill", "Level"]
+            color=alt.value("#0A2540")
         ),
         use_container_width=True
     )
-
-    st.markdown("""
-    **Tools:** Python, SQL, Streamlit, Git, Anaconda, Visual Studio  
-    **Certifications:** AXA National IT Challenge (2025), EFREI Generative AI Basics (2025)
-    """)
 
     st.markdown('</div>', unsafe_allow_html=True)
 
@@ -255,8 +235,7 @@ elif section == "Languages":
     st.altair_chart(
         alt.Chart(lang).mark_arc(innerRadius=70).encode(
             theta="Level:Q",
-            color="Language:N",
-            tooltip=["Language", "Level"]
+            color="Language:N"
         ),
         use_container_width=True
     )
@@ -270,14 +249,27 @@ elif section == "Projects":
     st.markdown('<div class="card">', unsafe_allow_html=True)
     st.header("📊 Relevant Projects")
 
+    proj = pd.DataFrame({
+        "Project": ["Power BI – BMW Sales", "Streamlit CV Dashboard"],
+        "Focus Level": [90, 95]
+    })
+
+    st.altair_chart(
+        alt.Chart(proj).mark_bar().encode(
+            x="Focus Level:Q",
+            y="Project:N",
+            color=alt.value("#0F172A")
+        ),
+        use_container_width=True
+    )
+
     st.markdown("""
+    **Sales Analysis – Business Intelligence Project (Power BI)**  
+    🔗 https://drive.google.com/file/d/1EZdoD37IQdLHSPXcpjMn6AOit0DGbI0A/view  
+
     **Interactive CV Dashboard – Streamlit**  
-    Business Intelligence application for structured visualization of an academic CV.
-
-    **Drawing Portfolio**  
-    Personal creative project supporting idea clarity and communication.
+    🔗 https://cv-dashboard-app-rxyfesphor6ufjqqqni5vw.streamlit.app
     """)
-
     st.markdown('</div>', unsafe_allow_html=True)
 
 # ==================================================
@@ -288,19 +280,13 @@ elif section == "Extracurricular":
     st.header("🏅 Extracurricular Activities & Interests")
 
     st.markdown("""
-    **Student Union (BDE) – Event Organizer**  
-    - €2,500 funding negotiated  
-    - Events with 200+ attendees  
+    **Student Union (BDE)** — Event Organizer  
+    **Student Ambassador — EFREI**  
+    **Football Club — EFREI**  
+    **Bab Rayan Association** — Group Leader  
 
-    **Football Club – EFREI Paris**  
-    Official university team member  
-
-    **Volunteering – Bab Rayan Association**  
-    Group leader supporting orphan children  
-
-    **Arts & Culture:** Theater, Piano, Drawing
+    **Interests:** Theater, Piano, Drawing, Fitness
     """)
-
     st.markdown('</div>', unsafe_allow_html=True)
 
 # ==================================================
